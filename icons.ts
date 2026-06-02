@@ -21,7 +21,7 @@ const hex_to_color_overrides = {
 };
 
 for (const [identifier, { colors, colorEntries }] of flavorEntries) {
-  let output = "[icon]\n";
+  let output = "";
 
   const addIcons = (
     icons: Record<string, { color: string; icon: string }>,
@@ -46,7 +46,7 @@ for (const [identifier, { colors, colorEntries }] of flavorEntries) {
   addIcons(icons_by_file_extension, "exts");
 
   await Promise.all(colorEntries.filter(([_, c]) => c.accent).map(async ([accent]) => {
-    const dist = `themes/${identifier}/catppuccin-${identifier}-${accent}.toml`;
+    const dist = `flavors/${identifier}/catppuccin-${identifier}-${accent}.yazi/flavor.toml`;
     const theme = await Deno.readTextFile(dist);
     await Deno.writeTextFile(
       dist,

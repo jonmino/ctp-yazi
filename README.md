@@ -36,10 +36,16 @@
 
 ## Usage
 
-1. Copy the theme file of your choice from `themes/` to your [Yazi configuration directory](https://yazi-rs.github.io/docs/configuration/overview) with the filename `theme.toml`.
-2. For Catppuccin-themed syntax highlighting in the preview pane:
+1. Copy the flavor directory of your choice from `flavors/` to the `flavors/` directory in your [Yazi configuration directory](https://yazi-rs.github.io/docs/configuration/overview).
+2. Add a `theme.toml` to the Yazi configuration directory where you set a dark and light flavor, e.g.:
+  ```toml
+  [flavor]
+  dark = "catppuccin-mocha-sapphire"
+  light = "catppuccin-latte-sapphire"
+  ```
+3. For Catppuccin-themed syntax highlighting in the preview pane:
    - Download the `.tmTheme` file of your choice from [catppuccin/bat](https://github.com/catppuccin/bat).
-   - Set the `syntect_theme` option of your theme file downloaded in step 1 with the path of your downloaded `.tmTheme` file.
+   - Copy the file into the directory of your flavor (the one with the `flavor.toml`-file) and name it `tmtheme.xml`.
 
 ## Contributing
 
@@ -47,6 +53,7 @@ To contribute to this port you will need the following dependencies installed:
 
 - [Whiskers](https://github.com/catppuccin/whiskers)
 - [Deno](https://docs.deno.com/runtime/manual/getting_started/installation)
+- [just](https://just.systems/man/en/installation.html)
 
 Edit `yazi.tera` to make changes to the theme. Run `just build` to build the output themes in `themes/`.
 
